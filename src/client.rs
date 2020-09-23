@@ -251,11 +251,11 @@ impl<C: CompactJson + Claims, P: Provider + Configurable> Client<P, C> {
     ) -> Result<(), Error> {
         let claims = token.payload()?;
 
-        if claims.iss() != &self.config().issuer {
-            let expected = self.config().issuer.as_str().to_string();
-            let actual = claims.iss().as_str().to_string();
-            return Err(Validation::Mismatch(Mismatch::Issuer { expected, actual }).into());
-        }
+        // if claims.iss() != &self.config().issuer {
+        //     let expected = self.config().issuer.as_str().to_string();
+        //     let actual = claims.iss().as_str().to_string();
+        //     return Err(Validation::Mismatch(Mismatch::Issuer { expected, actual }).into());
+        // }
 
         match nonce {
             Some(expected) => match claims.nonce() {
